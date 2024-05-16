@@ -7,7 +7,7 @@ phases:
     commands:
       - echo Installing dependencies...
   pre_build:
-  commands:
+    commands:
       - echo Logging in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
