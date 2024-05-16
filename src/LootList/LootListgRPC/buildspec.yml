@@ -10,9 +10,10 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - echo $AWS_DEFAULT_REGION
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 891376984712.dkr.ecr.ap-south-1.amazonaws.com/lootlist-grpc
-      - REPOSITORY_URI=891376984712.dkr.ecr.ap-south-1.amazonaws.com/lootlist-grpc
+      - echo $AWS_DEFAULT_ REGION
+      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account | cut -d '"' -f2)  # Get account ID dynamically
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com  # Use account ID only
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/lootlist-grpc  # Construct URI with account ID
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
