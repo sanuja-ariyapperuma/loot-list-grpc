@@ -20,6 +20,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image.
+      - echo Current Directory is $PWD 
       - docker build -t $REPOSITORY_URI:latest .
       - echo dockerbuilddone   
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
