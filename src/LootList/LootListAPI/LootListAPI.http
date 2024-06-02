@@ -1,0 +1,6 @@
+@LootListAPI_HostAddress = http://localhost:5062
+
+GET {{LootListAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

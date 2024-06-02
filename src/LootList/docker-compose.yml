@@ -1,0 +1,14 @@
+version: "3"
+services:
+  lootlist-grpc:
+    build:
+      context: .
+      dockerfile: ./LootListgRPC/Dockerfile
+    ports:
+      - "8080:5000"
+  lootlist-api:
+    build:
+      context: .
+      dockerfile: ./LootListAPI/Dockerfile
+    ports:
+      - "80:8080"
